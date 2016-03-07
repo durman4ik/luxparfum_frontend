@@ -1,0 +1,126 @@
+<section class="s-pP-main" id="slide-3">
+	<div class="s-pP-wrapper">
+		<div class="l-t-back show-product">
+			<span class="link_to page brand" data-anchor="2" data-move-slide="1" ng-click="setUrl('brand')">&#9664;</a>
+		</div>
+		<div class="s-pP-container">
+			<div class="s-pP-title">
+				<div class="l-t-back-tolltip link_to page brand" data-anchor="2" data-move-slide="1" ng-click="setUrl('brand')"><span>Назад</span><div class='pulse'></div></div>
+				<h1 ng-bind="currentProduct.brand.name + ' ' + currentProduct.name_en"></h1>
+			</div>
+			<div class="s-pP-content">
+				<div class="s-pP-images">
+					<div class="slider">
+						<div class="s-pP-image" ng-repeat="url in currentProduct.images_url" product-images-slider-loaded>
+							<img ng-src="{{url}}">
+						</div>
+					</div>
+					
+					
+				</div>
+				<div class="s-pP-info">
+					<div class="s-pP-name"><h1>{{currentProduct.name_en}}</h1></div>
+					<div class="s-pP-brand">
+						<span>Производитель: <span class="s-pP-brand-name" ng-bind="currentProduct.brand.name"></span></span>
+						<span class="s-pP-year" ng-show="currentProduct.year.length > 0">Год выпуска: <span ng-bind="currentProduct.year"></span>
+						</span>
+					</div>
+					
+					<div class="s-pP-description" ng-bind="currentProduct.description">
+					</div>
+					
+					<div class="s-pP-prices">
+						<span class="s-pP-old-price" ng-show="order.volume.old_price.length > 0"><span ng-bind="order.volume.old_price * order.count | number:0"></span>,000 б.р.</span>
+						<span class="s-pP-price" ng-show="order.volume.price.length > 0"><span ng-bind="order.volume.price * order.count | number:0"></span>,000 б.р.</span>
+					</div>
+					
+					<div class="s-pP-volumes">
+						<label>Объем: </label>
+						<select ng-model="order.volume	" class="form-control"
+								ng-options="volume.value + ' - ' + volume.price + '.000 руб.' for volume in currentProduct.volumes | orderBy : 'value'" >
+						</select>
+					</div>
+					<div class="s-pP-count">
+						<label>Количество: </label>
+						<input type="number" class="form-control" ng-model="order.count" min="1">
+					</div>
+					<div class="s-pP-make-order" >
+						<button type="button" class="btn btn-success" ng-click="showModal(true)">
+							<span>Купить! </span>
+						</button>
+					</div>
+					
+					
+					<div class="s-pP-order-modal" ng-show="isModalShowed">
+						<div class="s-pP-modal-wrapper">
+							<div class="s-pP-modal-header">
+								<div class="s-pP-name"><span>Заказать &nbsp;</span> <h1 ng-bind="currentProduct.name_en"></h1></div>
+								<span class="s-pP-close-modal pull-right" ng-click="showModal(false)">&#10006;</span>
+							</div>
+							<div class="s-pP-modal-content">
+								<div class="s-pP-modal-info">
+									<div class="s-pP-table">
+										<span class="li">
+											Без скидки: 
+											<span class="value">
+												<span class="value" ng-bind="order.volume.old_price * order.count | number : 0"> </span>,000 б.р.
+											</span>
+										</span>
+										<span class="li">
+											Скидка: 
+											<span class="value">
+												<span class="value" ng-bind="(order.volume.old_price - order.volume.price) * order.count | number : 0">
+												</span>,000 б.р.</span>
+										</span>
+										<span class="li">Объем: <span class="value" ng-bind="order.volume.value"></span></span>
+										<span>Количество: <span class="value" ng-bind="order.count"></span></span>
+										
+										<div class="s-pP-total">
+											Итого: 
+											<span><span ng-bind="order.volume.price * order.count | number : 0"></span>,000 б.р.</span>
+										</div>
+										
+									</div>
+
+								</div>
+								<div class="s-pP-modal-fields">
+									<div class="s-pP-field name">
+										<label>Ваше имя</label>
+										<input type="text" class="form-control" autofocus="true" ng-model="order.name">
+									</div>
+									<div class="s-pP-field num">
+										<label>Телефон</label>
+										<input type="tel" class="form-control" required ng-model="order.phone">
+									</div>
+									<div class="s-pP-modal-button">
+										<button type="submit"  class="btn btn-success" ng-click="createOrder(order)">
+											<span>Отправить заказ онлайн!</span>
+										</button>
+<!--
+										<button type="button" class="btn btn-info" ng-click="createOrder(order)">
+											<span>Есть вопросы. Перезвоните мне!</span>
+										</button>
+-->
+										<button type="button" class="btn btn-danger" ng-click="showModal(false)">
+											<span>Отмена</span>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="s-pP-mBox" ng-show="isMessageBoxShowed">
+						<div class="s-pP-mBox-wrapper">
+							<div class="s-pP-mBox-container">
+								<span class="s-pP-mBox-ok" ng-show="isSucceed">OK!</span>
+								<span class="s-pP-mBox-error" ng-hide="isSucceed">Ошибка :(</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html ng-app="StoreApplication">
+	<head>
+		<base href="/">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="favicon.png">
+		<title>Luxparfum.by - Парфюмерия и духи. Скидки от 50%. Доставка!</title>
+		<link rel="stylesheet" type="text/css" media="all" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">	
+		<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css">	
+		<link rel="stylesheet" type="text/css" href="css/hover.css">
+		<link rel="stylesheet" type="text/css" href="css/please-wait.css">
+		
+<!--		<script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>-->
+		
+		<script>
+//			var client = algoliasearch("Y94AXVHIWI", "e2b9e78aa41ae3dbd37943ba39686a44");
+		</script>
+	</head>
+	<body>
+		<div class="full-page" id="fullpage">
+			<section class='section header-background' id="first">
+				<site-header></site-header>
+				<home-slider></home-slider>
+			</section>
+
+			<section class="section" id="second">
+				<div class="slide">
+					<popular-products></popular-products>
+				</div>
+<!--
+				<div class="slide">
+					<select-category-of-brands></select-category-of-brands>
+				</div>
+-->
+				<div class="slide">
+					<brands-page></brands-page>
+				</div>
+				<div class="slide">
+					<product-show-page></product-show-page>
+				</div>
+			</section>
+			
+			<section class="section" id="third" style="height:300px;">
+				<site-footer></site-footer>
+			</section>
+		</div>
+		
+		<script type="text/javascript" src='js/vendor/angular.min.js'></script>
+		<script type="text/javascript" src="js/vendor/angular-route.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery-2.2.0.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery.fullPage.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery.bxslider.min.js"></script>
+		<script type="text/javascript" src="js/vendor/angular-filter.js"></script>
+		<script type="text/javascript" src="js/vendor/please-wait.min.js"></script>
+		
+		<script type= "text/javascript" src="js/app.js"></script>
+		<script type= "text/javascript" src="js/routes.js"></script>
+			
+		<script type="text/javascript" src="js/services/brands.js"></script>
+		<script type="text/javascript" src="js/services/banners.js"></script>
+		<script type="text/javascript" src="js/services/products.js"></script>
+		
+		<script type="text/javascript" src="js/filters/repeat.js"></script>
+		<script type="text/javascript" src="js/filters/get-by-id.js"></script>
+		
+		<script type= "text/javascript" src="js/directives/static/header.js"></script>
+		<script type= "text/javascript" src="js/directives/static/footer.js"></script>
+		<script type= "text/javascript" src="js/directives/home/image-slider.js"></script>
+		<script type= "text/javascript" src="js/directives/home/popular-products.js"></script>
+		<script type= "text/javascript" src="js/directives/home/products-are-loaded.js"></script>
+		<script type= "text/javascript" src="js/directives/brands/brand-page.js"></script>
+		<script type= "text/javascript" src="js/directives/brands/last-product-is-loaded.js"></script>
+		<script type= "text/javascript" src="js/directives/brands/select-category-of-brands.js"></script>
+		<script type= "text/javascript" src="js/directives/products/product-page.js"></script>
+		<script type= "text/javascript" src="js/directives/products/product-images-slider-loaded.js"></script>
+		
+		<script type= "text/javascript" src="js/controllers/home/home-index-controller.js"></script>
+		<script type= "text/javascript" src="js/controllers/products/products-index-controller.js"></script>
+		<script type= "text/javascript" src="js/controllers/products/products-show-controller.js"></script>
+		<script type= "text/javascript" src="js/controllers/brands/brands-index-controller.js"></script>
+		<script type= "text/javascript" src="js/controllers/pages/pages-controller.js"></script>
+		
+		<script type="text/javascript">
+		  window.loadingScreen = window.pleaseWait({
+			  	logo: '/img/lyux_small.png',
+				backgroundColor: '#1B1B1B',
+				loadingHtml: '<p class="loading-message">Одну секундочку...</p><div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>'
+			});
+		</script>
+		
+		<!-- BEGIN JIVOSITE CODE {literal} -->
+		<script type='text/javascript'>
+			(function(){ var widget_id = '75PUQuckIs';
+			var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
+		<!-- {/literal} END JIVOSITE CODE -->
+		
+		<script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = location.protocol + '//vk.com/rtrg?r=s05pgCPH/kJq5pEGGrUO0QSBITKLfy2xB6fydNzPJ67QcJVAXKwhMoKEZKa47S7M*2*pI*FAD/vyk7/O2ocjDUbqSju*y4PYzvX5z1*Pus2kGMf15KU9Jih*hrsRNOgFyXcQwl7hnGpptNJkv5fO6otSt21gpSl1mbOuZs5UT0c-';</script>
+		
+		<!-- Yandex.Metrika counter -->
+		<script type="text/javascript">
+			(function (d, w, c) {
+				(w[c] = w[c] || []).push(function() {
+					try {
+						w.yaCounter35440915 = new Ya.Metrika({
+							id:35440915,
+							clickmap:true,
+							trackLinks:true,
+							accurateTrackBounce:true,
+							webvisor:true
+						});
+					} catch(e) { }
+				});
+
+				var n = d.getElementsByTagName("script")[0],
+					s = d.createElement("script"),
+					f = function () { n.parentNode.insertBefore(s, n); };
+				s.type = "text/javascript";
+				s.async = true;
+				s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+				if (w.opera == "[object Opera]") {
+					d.addEventListener("DOMContentLoaded", f, false);
+				} else { f(); }
+			})(document, window, "yandex_metrika_callbacks");
+		</script>
+		<noscript><div><img src="https://mc.yandex.ru/watch/35440915" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
+	</body>
+</html>

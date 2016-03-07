@@ -1,0 +1,109 @@
+<header>
+	<div class="header-wrapper">	
+		<div class='main-header'>
+			<div class="left-side">
+				<div class="logo">
+					<h1 class="logo">
+						<a ng-href="/#/" title="{{header.siteName}} - Парфюмерия и косметика в Минске" class="logo">
+							<img src="img/lyux_small.png" class="logo " alt="{{header.siteName}}. Парфюмерия и косметика в Минске" >
+						</a>
+					</h1>
+				</div>
+				<div class="phones">
+					<p>
+						<span class="phone code">+375 25</span>
+						<span class="phone number">937 32 63</span>
+						
+					</p>
+					<p>
+						<span class="phone code">+375 29</span>
+						<span class="phone number">537 32 63</span>
+					</p>    
+				</div>
+				<div class="times">
+					<p>
+						<span class="vremya">9.00 - 24.00, без выходных</span>
+					</p>  
+				</div>
+			</div>
+			<div class="right-side">
+				<div class="form-wrapper cf">
+					<input type="text" placeholder="Поиск..." ng-model="searchText" id="search" ng-change="changeSearch($event);">
+<!--					<button type="submit">&#62;</button>-->
+					<div class="search-output" ng-show="showSearch">
+						<div class="search-output-container">
+							<ul>
+								<li class="search-item link_to"  data-anchor="2" data-move-slide="2" ng-click="setCurrentProduct(item); hideSearch();"
+									ng-repeat="item in allProducts | filter : searchText">
+									<span ng-bind="item.brand.name + ' ' + item.name_en"></span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div> 
+			</div>
+		</div>
+
+		<div id="second-header" class='tB s-h'>
+			<div class="s-h-wrapper">
+				<div class="l-l-wrapper">
+					<div class="l-l-container">
+						<span class="l-l-text to_main" data-move-slide="0" data-anchor="1" ng-click="setUrl(null)">
+						</span>
+					</div>
+				</div>
+				<div class="left-phone hvr-grow">
+					<span class="phone code">+375 25</span>
+					<span class="phone number">937 32 63</span>
+				</div>
+				<ul class="menu">
+					<li class="menu-item left" ng-class="{active : currentCategory == 'women' || isHoverMenu(0)}">
+						<span title="Женские" class="link_to" data-anchor="2" data-move-slide="1" ng-click="setCurrentCategory('women')" ng-mouseover="setHoverMenu(0)" ng-mouseleave="setHoverMenu(100)">Женские</span>
+					</li>
+					<li class="menu-item" ng-click="showBrands = !showBrands" ng-mouseover="setHoverMenu(1)" ng-mouseleave="showBrands = false; setHoverMenu(100)" ng-class="showBrands || isHoverMenu(1) || currentCategory === 'null' ? 'active' : ''">
+						<span title="Бренды" class="all-brands">Бренды</span>
+						<div class="cat5 subcategoris" ng-show="showBrands" >
+							<div class="alphabet" >
+<!--
+								<ul>
+									<li ng-repeat="brand in allBrands | unique:'name.charAt(0)' | orderBy : 'name.charAt(0)' " ng-mouseenter="header.setActiveChar(brand.name.charAt(0))">{{brand.name.charAt(0)}}</li>
+									<li id="all-name" ng-mouseenter="header.setActiveChar('all-name')">Все</li>
+								</ul>
+-->
+							</div>
+							<div class="brends-menu">
+								<div ng-repeat="(k, v) in allBrands | groupBy : 'name.charAt(0)'">
+									<div class="row" ng-if="$index % 7 == 0"></div>
+									<div class="brands-letter" >
+										<span ng-bind="k"></span>
+										<div class="link_to sub-category-div c-pager-0" ng-repeat="brand in v | orderBy : 'name'" data-anchor="2" data-move-slide="1" ng-click="setCurrentBrand(brand)">
+											<span title="{{brand.name}}">{{brand.name}}</span>
+										</div>
+
+									</div>
+								</div>
+								<span class="clearer"></span>
+							</div>
+						</div>
+					</li>
+					<li class="menu-item" ng-mouseleave="setHoverMenu(100)" ng-mouseover="setHoverMenu(2)" ng-class="{active : currentCategory == 'men' || isHoverMenu(2)}">
+						<span title="Мужские"  class="link_to" data-anchor="2" data-move-slide="1" ng-click="setCurrentCategory('men')">Мужские</span>
+					</li>
+<!--
+					<li class="menu-item" ng-class="{active : currentCategory == 'Новинки'}">
+						<span title="Новинки"  class="link_to" data-anchor="2" data-move-slide="1" 
+						   ng-click="setCurrentCategory('Новинки')">Новинки</span>
+					</li>
+					<li class="menu-item right">
+						<span title="Косметика" style="disabled:true;" class="disabled">Косметика</span>
+					</li>
+-->
+				</ul>
+				<div class="right-phone hvr-grow">
+					<span class="phone code">+375 29</span>
+					<span class="phone number last">537 32 63</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

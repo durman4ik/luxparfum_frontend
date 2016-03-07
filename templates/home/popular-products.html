@@ -1,0 +1,48 @@
+<section class="p-p-main">
+	<div class="p-p-wrapper">
+		<div class="p-p-container">
+			<div class="p-p-title">
+				<h1>Популярные ароматы</h1>
+			</div>
+			<div class="p-pC-wrapper">
+				<ul class="p-p-slides" id="p-p-slider">
+					<li class="p-p-slide" ng-repeat="n in [] | range : 2" products-are-loaded last-product-is-loaded>
+						<ul class="p-p-row" ng-repeat="i in [] | range : 2">
+							{{setOffsetPp(n, i)}}
+							<li class="p-p-row-item hvr-overline-from-center link_to" ng-repeat="product in popularProducts | limitTo : 5 : offsetPp" data-anchor="2" data-move-slide="2" ng-click="setCurrentProduct(product)">
+								<span title="{{product.brand.name + ' ' + product.name_en}}" class="product-image">
+									<img ng-src="{{product.images_url[0]}}" alt="{{product.brand.name + ' ' + product.name_en}}">
+								</span>
+								<div class="product-info">
+									<h2 class="product-name">
+										<span class="brand-name" ng-bind="product.brand.name"></span>
+										<span class="product-version" ng-bind="product.version" title="{{setVersionTitle(product.version)}}"></span>
+										
+										<span title="{{product.brand.name + ' ' + product.name_en}}" class="link_to name page product" data-anchor="2" data-move-slide="2" ng-bind="product.name_en"></span>
+									</h2>
+									<div class='prices'>
+										<span class="old price" ng-show="product.volumes[0].old_price.length > 0">
+											<span ng-bind="product.volumes[0].old_price"></span>
+											<span class="zeros">000</span>
+										</span>	
+										<span class="new price" ng-show="product.volumes[0].price.length > 0"> 
+											<span ng-bind="product.volumes[0].price"></span>
+											<span class="zeros">000</span>
+										</span>
+										
+									</div>
+								</div>
+
+								<div class="gender-sign">
+									<img class="male" src="/img/male.jpg" ng-show="product.for_man" title="Для мужчин">
+									<img class="female" src="/img/female.jpg" ng-hide="product.for_man" title="Для женщин">
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</section>

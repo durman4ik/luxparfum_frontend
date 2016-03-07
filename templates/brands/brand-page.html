@@ -1,0 +1,80 @@
+<section class="" id="slide-2">
+	<div class="a-b-wrapper">
+		<div class="l-t-back select-brand">
+			<span class="link_to" data-anchor="2" data-move-slide="0" g-click="setUrl(null)">&#9664;</span>
+		</div>
+		<div class="a-b-container">
+			<div class="a-b-title">
+				<div class="l-t-back-tolltip link_to" data-anchor="2" data-move-slide="0" ng-click="setUrl(null)"><span>Назад</span><div class='pulse'></div></div>
+				<h1>Бренды</h1>
+			</div>
+
+			<div class="a-p-wrapper">
+				<ul class="a-p-slides" id="a-p-slider">
+					<li class="a-p-slide">
+						<ul class="a-p-row">
+							<li class="a-p-row-item hvr-overline-from-center link_to" ng-repeat="product in products"
+								data-anchor="2" data-move-slide="2" ng-click="setCurrentProduct(product)">
+								<span title="{{product.brand.name + ' ' + product.name_en}}" class="product-image" >
+									<img ng-src="{{product.images_url[0]}}" alt="{{product.brand.name + ' ' + product.name_en}}">
+								</span>
+								<div class="product-info">
+									<h2 class="product-name">
+										<span class="brand-name" ng-bind="product.brand.name"></span>
+										<span class="product-version" ng-bind="product.version" title="{{setVersionTitle(product.version)}}"></span>
+										
+										<span title="{{product.brand.name + ' ' + product.name_en}}" class="link_to name" data-anchor="2" data-move-slide="2" ng-bind="product.name_en"></span>
+									</h2>
+									<div class='prices'>
+										<span class="old price" ng-show="product.volumes[0].old_price.length > 0">
+											<span ng-bind="product.volumes[0].old_price"></span>
+											<span class="zeros">000</span>
+										</span>	
+										<span class="new price" ng-show="product.volumes[0].price.length > 0"> 
+											<span ng-bind="product.volumes[0].price"></span>
+											<span class="zeros">000</span>
+										</span>
+										
+									</div>
+								</div>
+
+								<div class="gender-sign">
+									<img class="male" src="/img/male.jpg" ng-show="product.for_man" title="Для мужчин">
+									<img class="female" src="/img/female.jpg" ng-hide="product.for_man" title="Для женщин">
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="a-b-right">
+				<div class="a-b-right-current-brand">
+					<i class="fa fa-check"></i>
+					<span>Бренд: <span ng-bind="currentBrand.name"></span></span>
+					<span ng-hide="currentBrand.name.length > 0">Случайные товары</span>
+					<span class="reset-category" ng-click="setCurrentBrand(null)" ng-hide="currentBrand == null">&#10006;</span>
+				</div>
+				<div class="a-b-right-current-brand">
+					<i class="fa fa-check"></i>
+					<span>Категория:</span>
+					<span ng-show="currentCategory == 'null'">Все</span>
+					<span ng-show="currentCategory == 'men'">Мужские</span>
+					<span ng-show="currentCategory == 'women'">Женские</span>
+					<span class="reset-category" ng-click="setCurrentCategory(null)" ng-hide="currentCategory == null || currentCategory == 'null'">&#10006;</span>
+				</div>
+				<div class="a-b-right-container">
+					<ul class="a-b-right-list">
+						<li class="a-b-right-item" ng-class="{active: isActiveBrand(null)}">
+							<span ng-click="setCurrentBrand(null)" class="l-t-brand">Случайные</span>
+						</li>
+						<li class="a-b-right-item " ng-class="{active: isActiveBrand(brand)}" ng-repeat="brand in allBrands | orderBy : 'name.charAt(0)'">
+							<span ng-click="setCurrentBrand(brand)" class="l-t-brand  url brand" ng-bind="brand.name"></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
